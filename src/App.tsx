@@ -20,6 +20,14 @@ function App() {
           <Hero />
         </section>
         
+        <section id="projet">
+          
+        </section>
+        
+        <section id="contact">
+          
+        </section>
+        
         {/* Vous pourrez ajouter vos autres sections ici plus tard */}
       </main>
 

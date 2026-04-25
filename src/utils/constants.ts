@@ -28,4 +28,4 @@ export const navbarItems : navbarItemsTypes[]  = [
 ]
 
 
-export const mainSkills = ["Administrateur Système & Reseaux","Développeur Full-Stack","Cybersecurité","Hacking","Automation","IA"]
+export const mainSkills = ["Administrateur Système & Reseaux","Développeur Full-Stack","Cybersecurité","Hacking","IA & Automation","Cloud Computing"]

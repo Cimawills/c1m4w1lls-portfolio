@@ -1,36 +1,72 @@
-import { Play } from "lucide-react"
+import { Play } from "lucide-react";
+import { mainSkills } from "../utils/constants";
+import SkewForm from "./SkewForm";
+import { Line } from './Layout';
+
 
 export function Hero() {
-    return (
-        <div className="flex flex-col gap-5  px-8 py-12">
+  return (
+    <div className="flex flex-col gap-5  px-8 py-12">
+      <div className="flex flex-row gap-2 text-xs items-center ">
+        <Play color="#FFD600" fill="#FFD600" size={12} />
+        <span className="text-yellow font-mono">root@c1m4w1lls:~$ whoami</span>
+      </div>
 
-           <div className="flex flex-row gap-2 text-xs items-center ">
-             <Play color="#FFD600" fill="#FFD600" size={12} />
-             <span className="text-yellow font-mono">root@c1m4w1lls:~$ whoami</span>
-           </div>
-           
-           <div className="flex flex-col">
-            <span className="hero-title text-txt">CISSÉ</span>
-            <span className="hero-title text-yellow">MAMADOU</span>
-            <span className="hero-title text-txt">WILLIAMS</span>
-           </div>
+      <div className="flex flex-col">
+        <span className="hero-title text-txt">CISSÉ</span>
+        <span className="hero-title text-yellow">MAMADOU</span>
+        <span className="hero-title text-txt">WILLIAMS</span>
+      </div>
 
-           <span className="text-yellow-dim font-mono tracking-wider text-3xl">aka C1M4W1LLs</span>
+      <div className="flex flex-row gap-3">
+        <span className="text-yellow-dim font-mono tracking-wider text-3xl">aka C1M4W1LLS</span>
+        <Line widht={12} animation="animate-pulse"/>
+      </div>
 
-           <div className="flex">
-                <div className="flex flex-col font-mono text-txt-dim text-sm">
-                    <span>Administrateur Système-Réseaux & Développeur Full-Stack & passionné de Cybersécurité basé à Abidjan.</span>
-                    <span>Licence en Administration des Systèmes de Sécurité & Réseaux Informatique</span>
-                    <span>Linux · Windows Server · Cisco · Aruba · Python · Django · React · React Native · Flutter · Pentester dans l'âme</span>
-                </div>
-           </div>
-
-           <div className="flex">
-                <div className="bg-yellow-glow py-1 px-3 font-mono border-y border-t-border-bright border-b-border-main -skew-x-12">
-                    <span className="uppercase text-xs text-yellow-dim ">Administrateur Système & Reseaux</span>
-                </div>
-           </div>
-
+      <div className="flex flex-row gap-3">
+        <Line />
+        <div className="flex flex-col font-mono text-txt-dim text-sm">
+          <span>
+            Administrateur Système-Réseaux & Développeur Full-Stack & passionné
+            de Cybersécurité basé à Abidjan.
+          </span>
+          <span>
+            Licence en Administration des Systèmes de Sécurité & Réseaux
+            Informatique
+          </span>
+          <span>
+            Linux · Windows Server · Cisco · Aruba · Python · Django · React ·
+            React Native · Flutter · Pentester dans l'âme
+          </span>
         </div>
-    )
+      </div>
+
+      <div className="flex gap-3 mt-3">
+        {mainSkills.map((skill) => (
+          <SkewForm label={skill} />
+        ))}
+      </div>
+
+      <div className="flex gap-5">
+        <SkewForm
+          label="Voir mes projets"
+          bg="bg-yellow"
+          labelColor="text-txt-dimmer"
+          labelTwStyle="tracking-wider"
+          twStyle="px-5 py-2"
+          link={"#projet"}
+          hover="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 "
+        />
+        <SkewForm
+          label="me contacter"
+          bg="transparent"
+          labelColor="text-txt-yellow"
+          labelTwStyle="tracking-wider"
+          twStyle="px-5 py-2"
+          link={"#contact"}
+          hover="hover:bg-yellow-glow"
+        />
+      </div>
+    </div>
+  );
 }
