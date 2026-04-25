@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C1M4W1LLS — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Oxanium:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --yellow: #FFD600;
+    --yellow-dim: #B89C00;
+    --yellow-glow: rgba(255,214,0,0.15);
+    --bg: #0A0A0A;
+    --bg2: #111111;
+    --bg3: #181818;
+    --border: rgba(255,214,0,0.2);
+    --border-bright: rgba(255,214,0,0.6);
+    --text: #E8E8E8;
+    --text-dim: #777;
+    --mono: 'Share Tech Mono', monospace;
+    --head: 'Oxanium', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--mono); overflow-x: hidden; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--yellow); border-radius: 2px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: var(--head); font-size: 1.2rem; font-weight: 800; color: var(--yellow); letter-spacing: 3px; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--yellow); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 3rem 3rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(255,214,0,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3; pointer-events: none;
+  }
+  .terminal-line {
+    font-size: 0.75rem; color: var(--yellow); letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .terminal-line::before { content: '▶'; font-size: 0.6rem; }
+  .hero-name {
+    font-family: var(--head); font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 800; line-height: 0.9;
+    color: var(--text);
+    letter-spacing: -2px;
+  }
+  .hero-name span { color: var(--yellow); }
+  .hero-handle {
+    font-family: var(--head); font-size: clamp(1rem, 3vw, 1.8rem);
+    color: var(--yellow-dim); letter-spacing: 8px; font-weight: 300;
+    margin: 1rem 0;
+  }
+  .hero-bio {
+    max-width: 600px; font-size: 0.85rem; color: var(--text-dim);
+    line-height: 1.9; margin-top: 1.5rem;
+    border-left: 2px solid var(--yellow); padding-left: 1.5rem;
+  }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .badge {
+    font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border-bright);
+    color: var(--yellow);
+    background: var(--yellow-glow);
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .cta-row { display: flex; gap: 1rem; margin-top: 2.5rem; }
+  .btn-primary {
+    padding: 0.75rem 2rem; font-family: var(--mono); font-size: 0.75rem;
+    letter-spacing: 3px; text-transform: uppercase;
+    background: var(--yellow); color: #0A0A0A; font-weight: 700;
+    border: none; cursor: pointer;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,214,0,0.3); }
+  .btn-ghost {
+    padding: 0.75rem 2rem; font-family: var(--mono); font-size: 0.75rem;
+    letter-spacing: 3px; text-transform: uppercase;
+    background: transparent; color: var(--yellow); font-weight: 600;
+    border: 1px solid var(--border-bright); cursor: pointer;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    transition: background 0.15s;
+  }
+  .btn-ghost:hover { background: var(--yellow-glow); }
+
+  /* SECTIONS */
+  section { padding: 6rem 3rem; }
+  .section-tag { font-size: 0.65rem; color: var(--yellow); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .section-title { font-family: var(--head); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 3rem; }
+  .section-title span { color: var(--yellow); }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .skill-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    padding: 1.5rem; position: relative; overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--yellow); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .skill-card:hover { border-color: var(--border-bright); transform: translateY(-3px); }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+  .skill-name { font-family: var(--head); font-size: 1rem; font-weight: 700; color: var(--yellow); margin-bottom: 0.5rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+  .skill-tag { font-size: 0.6rem; padding: 0.2rem 0.5rem; background: var(--yellow-glow); color: var(--yellow); border: 1px solid var(--border); letter-spacing: 1px; }
+  .skill-desc { font-size: 0.75rem; color: var(--text-dim); line-height: 1.7; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+  .project-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    padding: 2rem; position: relative; overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .project-card:hover { border-color: var(--yellow); transform: translateY(-4px); }
+  .project-num { font-size: 3rem; font-family: var(--head); font-weight: 800; color: var(--border); position: absolute; top: 1rem; right: 1.5rem; line-height: 1; }
+  .project-label { font-size: 0.6rem; color: var(--yellow); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .project-name { font-family: var(--head); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .project-desc { font-size: 0.75rem; color: var(--text-dim); line-height: 1.8; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .stack-pill { font-size: 0.6rem; padding: 0.25rem 0.6rem; background: var(--bg3); color: var(--text-dim); border: 1px solid var(--border); }
+
+  /* HACKATHON */
+  #hackathon { background: var(--bg2); }
+  .hack-card {
+    border: 1px solid var(--yellow); background: var(--yellow-glow);
+    padding: 2.5rem; max-width: 800px;
+    position: relative;
+  }
+  .hack-card::after {
+    content: '🏆'; position: absolute; right: 2rem; top: 2rem; font-size: 3rem;
+    filter: grayscale(0.3);
+  }
+  .hack-rank { font-family: var(--head); font-size: 4rem; font-weight: 800; color: var(--yellow); line-height: 1; }
+  .hack-title { font-family: var(--head); font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0; }
+  .hack-sub { font-size: 0.8rem; color: var(--text-dim); line-height: 1.8; max-width: 500px; }
+
+  /* CONTACT */
+  #contact { text-align: center; position: relative; overflow: hidden; }
+  #contact::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(255,214,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .contact-email {
+    font-family: var(--head); font-size: clamp(1.2rem, 4vw, 2rem);
+    color: var(--yellow); font-weight: 700; letter-spacing: 4px;
+    display: block; margin: 2rem auto;
+    text-decoration: none; position: relative; z-index: 1;
+  }
+  .social-row { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+  .social-btn {
+    padding: 0.6rem 1.5rem; font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    background: transparent; color: var(--text-dim);
+    border: 1px solid var(--border); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .social-btn:hover { color: var(--yellow); border-color: var(--yellow); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.65rem; color: var(--text-dim); letter-spacing: 2px;
+  }
+  footer span { color: var(--yellow); }
+
+  /* CURSOR BLINK */
+  .cursor { display: inline-block; width: 10px; height: 1em; background: var(--yellow); margin-left: 4px; animation: blink 1s step-end infinite; vertical-align: text-bottom; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(20px); animation: fadeUp 0.7s forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: none; } }
+  .d1{animation-delay:0.1s} .d2{animation-delay:0.2s} .d3{animation-delay:0.3s} .d4{animation-delay:0.4s} .d5{animation-delay:0.5s}
+
+  /* SCROLLBAR ACCENTS ACROSS PAGE */
+  .line-accent {
+    width: 60px; height: 2px; background: var(--yellow); margin-bottom: 0.5rem;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">C1M4W1LLS</div>
+  <div class="nav-links">
+    <a href="#about">À propos</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projets</a>
+    <a href="#hackathon">Hackathon</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="grid-bg"></div>
+  <div class="terminal-line fade-in d1">root@c1m4w1lls:~$ whoami</div>
+  <h1 class="hero-name fade-in d2">
+    CISSÉ<br><span>MAMADOU</span><br>WILLIAMS
+  </h1>
+  <div class="hero-handle fade-in d3">aka C1M4W1LLS<span class="cursor"></span></div>
+  <p class="hero-bio fade-in d4">
+    Développeur Full-Stack & passionné de Cybersécurité basé à Abidjan.<br>
+    Licence en Administration des Systèmes de Sécurité & Réseaux Informatique.<br>
+    Python addict · React · Django · Flutter · Azure · Pentester dans l'âme.
+  </p>
+  <div class="hero-badges fade-in d5">
+    <span class="badge">Développeur Full-Stack</span>
+    <span class="badge">Cybersécurité</span>
+    <span class="badge">Cloud Azure</span>
+    <span class="badge">Automatisation</span>
+  </div>
+  <div class="cta-row fade-in d5">
+    <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Voir mes projets</button>
+    <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Me contacter</button>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">// compétences</div>
+  <div class="line-accent"></div>
+  <h2 class="section-title">Mes <span>armes</span></h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🐍</div>
+      <div class="skill-name">Python</div>
+      <div class="skill-desc">Langage de prédilection. Scripts d'automatisation, outils CLI, applications desktop robustes.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Automation</span>
+        <span class="skill-tag">Tkinter</span>
+        <span class="skill-tag">FastAPI</span>
+        <span class="skill-tag">CLI Tools</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚛️</div>
+      <div class="skill-name">Frontend</div>
+      <div class="skill-desc">Interfaces modernes et réactives. De la landing page à l'app mobile cross-platform.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">React Native</span>
+        <span class="skill-tag">Flutter</span>
+        <span class="skill-tag">TypeScript</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔧</div>
+      <div class="skill-name">Backend</div>
+      <div class="skill-desc">APIs solides et scalables. Architecture RESTful, gestion BDD, authentification sécurisée.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Django</span>
+        <span class="skill-tag">DRF</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">JWT</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">☁️</div>
+      <div class="skill-name">Cloud & IAM</div>
+      <div class="skill-desc">Déploiement, gestion d'identité et mobilité d'entreprise sur l'écosystème Microsoft.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Azure</span>
+        <span class="skill-tag">Entra ID</span>
+        <span class="skill-tag">Intune</span>
+        <span class="skill-tag">Power Platform</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🛡️</div>
+      <div class="skill-name">Cybersécurité</div>
+      <div class="skill-desc">Pentesting, sécurité réseau, analyse de vulnérabilités. 3ème place au Cyber Africa Forum Hackathon.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Pentesting</span>
+        <span class="skill-tag">Réseau</span>
+        <span class="skill-tag">OSINT</span>
+        <span class="skill-tag">CTF</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-name">Réseaux & Systèmes</div>
+      <div class="skill-desc">Administration systèmes Linux/Windows, configuration réseau, monitoring et maintenance.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">Windows Server</span>
+        <span class="skill-tag">TCP/IP</span>
+        <span class="skill-tag">VLAN</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background: var(--bg);">
+  <div class="section-tag">// projets</div>
+  <div class="line-accent"></div>
+  <h2 class="section-title">Ce que j'ai <span>construit</span></h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-label">Automatisation</div>
+      <div class="project-name">Scripts Python Pro</div>
+      <div class="project-desc">Suite d'outils d'automatisation système : gestion de fichiers, scraping, envoi de rapports automatiques et monitoring réseau.</div>
+      <div class="project-stack">
+        <span class="stack-pill">Python</span>
+        <span class="stack-pill">Selenium</span>
+        <span class="stack-pill">Cron</span>
+        <span class="stack-pill">SMTP</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-label">Application Web</div>
+      <div class="project-name">Plateforme Full-Stack</div>
+      <div class="project-desc">Application web complète avec authentification JWT, dashboard interactif, API REST et interface React moderne.</div>
+      <div class="project-stack">
+        <span class="stack-pill">React</span>
+        <span class="stack-pill">Django</span>
+        <span class="stack-pill">PostgreSQL</span>
+        <span class="stack-pill">Docker</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-label">Mobile</div>
+      <div class="project-name">App Cross-Platform</div>
+      <div class="project-desc">Application mobile développée avec Flutter et React Native, connectée à une API Django, déployée sur iOS & Android.</div>
+      <div class="project-stack">
+        <span class="stack-pill">Flutter</span>
+        <span class="stack-pill">React Native</span>
+        <span class="stack-pill">Firebase</span>
+        <span class="stack-pill">REST API</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">04</div>
+      <div class="project-label">Desktop Tool</div>
+      <div class="project-name">Outil de Sécurité</div>
+      <div class="project-desc">Application desktop Python pour l'analyse réseau, scan de ports et audit de sécurité basique pour les sysadmins.</div>
+      <div class="project-stack">
+        <span class="stack-pill">Python</span>
+        <span class="stack-pill">Tkinter</span>
+        <span class="stack-pill">Scapy</span>
+        <span class="stack-pill">Nmap</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HACKATHON -->
+<section id="hackathon">
+  <div class="section-tag">// palmarès</div>
+  <div class="line-accent"></div>
+  <h2 class="section-title">Sur le <span>terrain</span></h2>
+  <div class="hack-card">
+    <div class="hack-rank">#3</div>
+    <div class="hack-title">Cyber Africa Forum — Hackathon Cybersécurité</div>
+    <div class="hack-sub">
+      3ème place au premier Hackathon organisé lors du Cyber Africa Forum — le rendez-vous incontournable de la cybersécurité en Afrique. En duo avec mon coéquipier, on a relevé le défi face aux meilleurs profils du continent.
+    </div>
+    <div class="hero-badges" style="margin-top: 1.5rem;">
+      <span class="badge">Cyber Africa Forum</span>
+      <span class="badge">Top 3</span>
+      <span class="badge">Abidjan</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">// contact</div>
+  <div class="line-accent" style="margin: 0 auto 0.5rem;"></div>
+  <h2 class="section-title">Let's <span>connect</span></h2>
+  <p style="color: var(--text-dim); font-size: 0.8rem; max-width: 400px; margin: 0 auto; line-height: 1.9;">
+    Un projet ? Une collab ? Une opportunité ? La porte est ouverte.
+  </p>
+  <a href="mailto:contact@c1m4w1lls.dev" class="contact-email">contact@c1m4w1lls.dev</a>
+  <div class="social-row">
+    <a class="social-btn" href="#">GitHub</a>
+    <a class="social-btn" href="#">LinkedIn</a>
+    <a class="social-btn" href="#">Twitter/X</a>
+  </div>
+</section>
+
+<footer>
+  <div>© 2025 <span>C1M4W1LLS</span> — Cissé Mamadou Williams</div>
+  <div>Abidjan, Côte d'Ivoire 🇨🇮</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-card, .project-card').forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        setTimeout(() => {
+          el.style.transition = 'opacity 0.5s, transform 0.5s';
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }, i * 80);
+      });
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.skills-grid, .projects-grid').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

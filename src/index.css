@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Share+Tech+Mono&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --yellow: #FFD600;
+  --yellow-dim: #B89C00;
+  --yellow-glow: rgba(255, 214, 0, 0.12);
+  --yellow-glow2: rgba(255, 214, 0, 0.06);
+  --bg: #080808;
+  --bg2: #0f0f0f;
+  --bg3: #161616;
+  --bg4: #1c1c1c;
+  --border: rgba(255, 214, 0, 0.15);
+  --border-bright: rgba(255, 214, 0, 0.55);
+  --text: #EFEFEF;
+  --text-dim: #888;
+  --text-dimmer: #555;
+  --mono: 'Share Tech Mono', monospace;
+  --head: 'Oxanium', sans-serif;
+  --radius: 4px;
+  --nav-h: 64px;
+}
+
+
+.grid-bg {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3; pointer-events: none;
+}
+
+@theme {
+  /* Couleurs */
+  --color-yellow: var(--yellow);
+  --color-yellow-dim: var(--yellow-dim);
+  --color-yellow-glow: var(--yellow-glow);
+  --color-yellow-glow2: var(--yellow-glow2);
+  
+  --color-bg-base: var(--bg);
+  --color-bg-soft: var(--bg2);
+  --color-bg-muted: var(--bg3);
+  --color-bg-alt: var(--bg4);
+
+  --color-border-main: var(--border);
+  --color-border-bright: var(--border-bright);
+
+  --color-txt: var(--text);
+  --color-txt-dim: var(--text-dim);
+  --color-txt-dimmer: var(--text-dimmer);
+
+  /* Typographies */
+  --font-mono: var(--mono);
+  --font-head: var(--head);
+
+  /* Rayon de bordure et Espacements */
+  --radius-custom: var(--radius);
+  --spacing-nav: var(--nav-h);
+}
+
+
+@utility hero-title {
+  @apply text-8xl font-extrabold font-head uppercase tracking-tighter;
+}
+
