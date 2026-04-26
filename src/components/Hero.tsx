@@ -24,7 +24,7 @@ export function Hero() {
       </div>
 
       <div className="flex flex-row gap-3">
-        <Line />
+        <Line widht={2} />
         <div className="flex flex-col font-mono text-txt-dim text-sm">
           <span>
             Administrateur Système-Réseaux & Développeur Full-Stack & passionné
@@ -41,7 +41,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="flex gap-3 mt-3">
+      <div className="flex gap-3 mt-3 flex-wrap">
         {mainSkills.map((skill) => (
           <SkewForm label={skill} />
         ))}

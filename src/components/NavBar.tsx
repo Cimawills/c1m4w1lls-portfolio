@@ -4,7 +4,7 @@ import { Play } from "lucide-react"
 export function NavBar() {
     return (
 
-        <div className="flex flex-row fixed w-full justify-between items-center h-15 bg-bg-soft py-3 px-12 border border-b-yellow-dim">
+        <div className="flex flex-row fixed flex-wrap  w-full justify-between items-center h-15 bg-bg-soft py-3 px-12 border border-b-yellow-dim">
             <div>
                 <span className="text-yellow text-xl font-extrabold tracking-widest font-head">C1M4W1LLS</span>
             </div>

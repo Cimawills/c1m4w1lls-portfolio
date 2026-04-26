@@ -1,20 +1,17 @@
-import clsx from "clsx"
+import clsx from "clsx";
 
-interface LineInterface{
-    widht? : number,
-    animation? : string
+interface LineInterface {
+  widht?: number;
+  animation?: string;
+  bg?: string;
 }
 
-export function Line({widht=3,...props}:LineInterface) {
+export function Line({ widht = 3, ...props }: LineInterface) {
+  let className = clsx(
+    `w-[${widht}px]`,
+    props.bg ?? "bg-yellow",
+    props.animation,
+  );
 
-    let className = clsx(
-        "bg-yellow",
-        `w-[${widht}px] `,
-        props.animation
-    )
-    
-    console.log(className)
-    return (
-        <div className={className}></div>
-    )
+  return <div className={className}></div>;
 }
