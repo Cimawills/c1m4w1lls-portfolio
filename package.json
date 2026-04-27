@@ -6,7 +6,7 @@
   "homepage": "https://cimawills.github.io/c1m4w1lls-portfolio/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc & vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
@@ -37,5 +37,4 @@
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.10"
   }
-  
 }
