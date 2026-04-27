@@ -9,7 +9,7 @@ export interface SkillCardInterface{
     describe : string
     tags : string[]
 }
-
+ 
 export type  ProjetsCardType =  {
     projectType : string
     indexNumber : string
@@ -21,4 +21,4 @@ export interface  ThrophieCardInterface{
     describe : string
     tags : string[],
     thophyIcon? : string,
-}
+}; 
