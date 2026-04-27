@@ -98,7 +98,7 @@ export function ThrophieCard({...props} : ThrophieCardInterface) {
                 break;
         
             default:
-                thophyIcon = ""
+                thophyIcon = "🏆"
                 break;
         }
     }

@@ -24,7 +24,7 @@ export const navbarItems : navbarItemsTypes[]  = [
     },
     {
         label : "Blog",
-        link : "#"
+        link : "/blog"
     },
 ]
 
