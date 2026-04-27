@@ -14,9 +14,9 @@ export function About({aboutInfos} : AboutInfoProps) {
       </div>
 
       <div className="flex flex-col">
-        <span className="hero-title text-txt">CISSÉ</span>
+        <span className="hero-title">CISSÉ</span>
         <span className="hero-title text-yellow">MAMADOU</span>
-        <span className="hero-title text-txt">WILLIAMS</span>
+        <span className="hero-title">WILLIAMS</span>
       </div>
 
       <div className="flex flex-row items-center gap-3">
@@ -25,7 +25,7 @@ export function About({aboutInfos} : AboutInfoProps) {
       </div>
 
       <div className="flex flex-row gap-3">
-        <Line width={3} heightFull={true} />
+        <div className="w-1 bg-yellow shrink-0"></div>
         <div className="flex flex-col font-mono text-txt-dim text-sm">
           {
             aboutInfos?.aboutItems?.map((item) => (<span>{item}</span> ))
