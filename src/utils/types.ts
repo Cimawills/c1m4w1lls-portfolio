@@ -3,17 +3,38 @@ export type navbarItemsTypes =  {
     link : string
 }
 
-export interface SkillCardInterface{
-    image : string,
-    title : string
+export interface SkillCardInterfaceCommun{
+    
+    label : string
     describe : string
     tags : string[]
 }
+
+interface SkillCardInterfaceWithImage extends SkillCardInterfaceCommun{
+    image : string,
+    icon? : never
+}
+
+interface SkillCardInterfaceWithIconText extends SkillCardInterfaceCommun{
+    image? : never,
+    icon : string
+}
+
+export type SkillCardInterface = SkillCardInterfaceWithIconText | SkillCardInterfaceWithImage
+
+export interface SkillsProps {
+  skills : SkillCardInterface[]
+} 
+
+
  
 export type  ProjetsCardType =  {
     projectType : string
     indexNumber : string
-} & SkillCardInterface;
+    link : string
+} & SkillCardInterfaceCommun;
+
+export type ProjetsCardProps = { projects : ProjetsCardType[] }
 
 export interface  ThrophieCardInterface{
     ranking : number,
@@ -22,3 +43,14 @@ export interface  ThrophieCardInterface{
     tags : string[],
     thophyIcon? : string,
 }; 
+
+export type TrophiesProps = { trophies : ThrophieCardInterface[] }
+
+export interface AboutInfoInterface{
+    aboutItems : string[]
+    mainSkills : string[]
+}
+
+export type AboutInfoProps = {
+    aboutInfos : AboutInfoInterface
+}

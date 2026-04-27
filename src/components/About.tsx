@@ -1,10 +1,11 @@
 import { Play } from "lucide-react";
-import { mainSkills } from "../utils/constants";
 import SkewForm from "./SkewForm";
 import { Line } from './Layout';
+import type {  AboutInfoProps } from "../utils/types";
 
 
-export function Hero() {
+export function About({aboutInfos} : AboutInfoProps) {
+  
   return (
     <div className="flex flex-col gap-5  px-8 py-12">
       <div className="flex flex-row gap-2 text-xs items-center ">
@@ -18,33 +19,24 @@ export function Hero() {
         <span className="hero-title text-txt">WILLIAMS</span>
       </div>
 
-      <div className="flex flex-row gap-3">
+      <div className="flex flex-row items-center gap-3">
         <span className="text-yellow-dim font-mono tracking-wider text-3xl">aka C1M4W1LLS</span>
-        <Line widht={12} animation="animate-pulse"/>
+        <Line width={14} twStyle="animate-blink-line" />
       </div>
 
       <div className="flex flex-row gap-3">
-        <Line widht={2} />
+        <Line width={3} height={80} />
         <div className="flex flex-col font-mono text-txt-dim text-sm">
-          <span>
-            Administrateur Système-Réseaux & Développeur Full-Stack & passionné
-            de Cybersécurité basé à Abidjan.
-          </span>
-          <span>
-            Licence en Administration des Systèmes de Sécurité & Réseaux
-            Informatique
-          </span>
-          <span>
-            Linux · Windows Server · Cisco · Aruba · Python · Django · React ·
-            React Native · Flutter · Pentester dans l'âme
-          </span>
+          {
+            aboutInfos?.aboutItems?.map((item) => (<span>{item}</span> ))
+          }
         </div>
       </div>
 
       <div className="flex gap-3 mt-3 flex-wrap">
-        {mainSkills.map((skill) => (
-          <SkewForm label={skill} />
-        ))}
+        {
+          aboutInfos?.mainSkills?.map((item) => ( <SkewForm label={item} /> ))
+        }
       </div>
 
       <div className="flex gap-5">

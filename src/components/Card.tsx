@@ -5,13 +5,21 @@ export function SkillCard({...props} : SkillCardInterface) {
     return (
         <div className="
             flex flex-col  gap-3 h-56 bg-bg-alt border border-border-main p-4
-            transition delay-100 duration-100  ease-in-out
-            hover:border hover:border-border-bright
-            hover:border-t-4 hover:border-t-border-brigh
+            transition-transform duration-300 ease-in-out
+            hover:-translate-y-0.75 hover:border-border-bright
+            before:content-[''] before:absolute before:top-0 before:left-0 before:right-0
+            before:h-0.5 before:bg-yellow
+            before:scale-x-0 before:origin-left
+            before:transition-transform before:duration-300
+            hover:before:scale-x-100
             "
         >
-            <img src={props.image} className="aspect-square w-6"/>
-            <span className="text-md font-bold text-yellow font-head">{props.title}</span>
+            {
+                props.image 
+                ? <img src={`/images/${props.image}`} className="aspect-square w-6"/> 
+                : <span className="text-xl">{props.icon}</span>
+            }
+            <span className="text-md font-bold text-yellow font-head">{props.label}</span>
             <p className="font-mono text-xs text-txt-dim">
                 {props.describe}
             </p>
@@ -38,12 +46,13 @@ export function ProjectCard({...props} : Omit<ProjetsCardType,"image">) {
             hover:border-y-2 hover:border-y-border-bright
             hover:border-x-2 hover:border-x-yellow
             "
-            href="#"
+            href={props.link} 
+            target="_blank"
         >
             <div className="flex font-mono justify-between items-center">
                 <div className="flex flex-col">
                     <span className="text-yellow font-mono tracking-wider">{props.projectType}</span>
-                    <span className="font-head font-bold text-2xl tracking-wider">{props.title}</span>
+                    <span className="font-head font-bold text-2xl tracking-wider">{props.label}</span>
                 </div>
                 
                 <span className="text-yellow-dim font-head text-5xl font-black tracking-wider">{props.indexNumber}</span>

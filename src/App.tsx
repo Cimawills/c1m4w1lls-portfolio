@@ -1,13 +1,40 @@
 import { NavBar } from './components/NavBar'
-import { Hero } from './components/Hero'
+import { About } from './components/About'
 import Skills from './components/Skills'
 import { Projects } from './components/Projects'
 import { Trophies } from './components/Trophies'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
+import { useEffect, useState } from 'react'
+import type { AboutInfoProps, ProjetsCardProps, SkillsProps, TrophiesProps } from './utils/types'
+import { getAboutInfos, getProjects, getSkills, getTrophies } from './utils/services/appwrite.service'
 // import './App.css' // Assurez-vous que votre CSS avec @theme est bien importé
 
 function App() {
+  
+  const [skills, setSkills] = useState<SkillsProps | []>([]);
+  const [projects, setProjects] = useState<ProjetsCardProps | []>([]);
+  const [trophies, setTrophies] = useState<TrophiesProps | []>([]);
+  const [aboutInfos, setAboutInfos] = useState<AboutInfoProps>();
+  //const [projects,setProjects] = useState<SkillsProps>();
+
+  useEffect(() => {
+    const fetchData = async ()=>{
+      const skillsData = await getSkills();
+      const projectData = await getProjects();
+      const trophiesData = await getTrophies();
+      const aboutInfosData = await getAboutInfos();
+
+
+      setSkills(skillsData)
+      setProjects(projectData)
+      setTrophies(trophiesData)
+      setAboutInfos(aboutInfosData)
+
+    }
+    fetchData()
+  },[])
+
   return (
     /* Conteneur principal avec votre couleur de fond --bg (#080808) */
     <div className="relative min-h-screen bg-bg-base text-txt selection:bg-yellow selection:text-bg-base overflow-y-hidden">
@@ -20,19 +47,19 @@ function App() {
       {/* Contenu principal */}
       <main className="relative z-30 ">
         <section id="hero" className='py-8'>
-          <Hero />
+          <About aboutInfos={aboutInfos}  />
         </section>
         
         <section id="skills">
-          <Skills />
+          <Skills skills={skills} />
         </section>
         
         <section id="projets">
-          <Projects />
+          <Projects projects={projects} />
         </section>
         
         <section id="trophies">
-          <Trophies />
+          <Trophies trophies={trophies} />
         </section>
         
         <section id="contact">

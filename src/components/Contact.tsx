@@ -1,12 +1,12 @@
+import { conntactAccounts } from "../utils/constants";
+import { SectionTitle } from "./Others";
 
 
 export function Contact() {
     return (
         <div className="flex flex-col gap-5 px-8 py-12 justify-center items-center text-center">
             <div className="flex flex-col gap-3">
-                <span className="text-yellow uppercase text-xs font-mono tracking-widest">
-                // Contact
-                </span>
+                <SectionTitle label="Contact" />
                 
             </div>
 
@@ -24,13 +24,13 @@ export function Contact() {
 
             <div className="flex gap-3 font-mono tracking-wider text-txt-dim uppercase text-sm rounded-xl">
                 
-                <a href="https://github.com/Cimawills" className="flex p-1 px-3 border border-border-main hover:border-yellow">
-                    Github
-                </a>
-                
-                <a href="https://github.com/Cimawills" className="flex p-1 px-3 border border-border-main hover:border-yellow">
-                    Linkedin
-                </a>
+                {
+                    conntactAccounts.map((item) => (
+                        <a href={item.link} target="_blank" className="flex p-1 px-3 border border-border-main hover:border-yellow">
+                            {item.label}
+                        </a>
+                    ))
+                }
 
             </div>
 
