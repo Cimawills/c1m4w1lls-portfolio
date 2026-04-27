@@ -21,11 +21,11 @@ export function About({aboutInfos} : AboutInfoProps) {
 
       <div className="flex flex-row items-center gap-3">
         <span className="text-yellow-dim font-mono tracking-wider text-3xl">aka C1M4W1LLS</span>
-        <Line width={14} twStyle="animate-blink-line" />
+        <Line width={14} twStyle="animate-blink-line"  />
       </div>
 
       <div className="flex flex-row gap-3">
-        <Line width={3} height={80} />
+        <Line width={3} heightFull={true} />
         <div className="flex flex-col font-mono text-txt-dim text-sm">
           {
             aboutInfos?.aboutItems?.map((item) => (<span>{item}</span> ))

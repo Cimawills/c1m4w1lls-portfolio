@@ -78,7 +78,7 @@
 }
 
 @utility hero-title {
-  @apply text-8xl font-extrabold font-head uppercase tracking-tighter;
+  @apply text-5xl md:text-8xl font-extrabold font-head uppercase tracking-tighter;
 }
 
 .animate-fade-pulse {

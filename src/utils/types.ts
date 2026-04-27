@@ -54,3 +54,13 @@ export interface AboutInfoInterface{
 export type AboutInfoProps = {
     aboutInfos : AboutInfoInterface
 }
+
+export type SocialInfoType = {
+    link : string
+    label : string
+    image : string
+}
+
+export type SocialInfoProps = {
+    socialInfos : SocialInfoType[]
+}

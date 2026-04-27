@@ -6,8 +6,8 @@ import { Trophies } from './components/Trophies'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { useEffect, useState } from 'react'
-import type { AboutInfoProps, ProjetsCardProps, SkillsProps, TrophiesProps } from './utils/types'
-import { getAboutInfos, getProjects, getSkills, getTrophies } from './utils/services/appwrite.service'
+import type { AboutInfoProps, ProjetsCardProps, SkillsProps, SocialInfoProps, TrophiesProps } from './utils/types'
+import { getAboutInfos, getProjects, getSkills, getSocialInfos, getTrophies } from './utils/services/appwrite.service'
 // import './App.css' // Assurez-vous que votre CSS avec @theme est bien importé
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
   const [projects, setProjects] = useState<ProjetsCardProps | []>([]);
   const [trophies, setTrophies] = useState<TrophiesProps | []>([]);
   const [aboutInfos, setAboutInfos] = useState<AboutInfoProps>();
+  const [socialInfos, setSocialInfos] = useState<SocialInfoProps[]>();
   //const [projects,setProjects] = useState<SkillsProps>();
 
   useEffect(() => {
@@ -24,12 +25,14 @@ function App() {
       const projectData = await getProjects();
       const trophiesData = await getTrophies();
       const aboutInfosData = await getAboutInfos();
+      const socialInfosData = await getSocialInfos();
 
 
       setSkills(skillsData)
       setProjects(projectData)
       setTrophies(trophiesData)
       setAboutInfos(aboutInfosData)
+      setSocialInfos(socialInfosData)
 
     }
     fetchData()
@@ -63,7 +66,9 @@ function App() {
         </section>
         
         <section id="contact">
-          <Contact />
+          <Contact 
+            socialInfos={socialInfos}
+          />
         </section>
         
         {/* Vous pourrez ajouter vos autres sections ici plus tard */}

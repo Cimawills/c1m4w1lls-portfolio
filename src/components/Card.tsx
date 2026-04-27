@@ -4,7 +4,7 @@ import SkewForm from "./SkewForm";
 export function SkillCard({...props} : SkillCardInterface) {
     return (
         <div className="
-            flex flex-col  gap-3 h-56 bg-bg-alt border border-border-main p-4
+            flex flex-col  gap-3 bg-bg-alt border border-border-main p-4
             transition-transform duration-300 ease-in-out
             hover:-translate-y-0.75 hover:border-border-bright
             before:content-[''] before:absolute before:top-0 before:left-0 before:right-0
@@ -42,7 +42,7 @@ export function SkillCard({...props} : SkillCardInterface) {
 export function ProjectCard({...props} : Omit<ProjetsCardType,"image">) {
     return (
         <a className="
-            flex flex-col  gap-3 h-56 bg-bg-alt border border-border-main p-4
+            flex flex-col  gap-3 bg-bg-alt border border-border-main p-4
             hover:border-y-2 hover:border-y-border-bright
             hover:border-x-2 hover:border-x-yellow
             "
@@ -105,7 +105,7 @@ export function ThrophieCard({...props} : ThrophieCardInterface) {
 
     return (
         <div className="
-            flex flex-col  gap-4 h-64 bg-yellow-glow border border-border-bright p-4
+            flex flex-col  gap-4  bg-yellow-glow border border-border-bright p-4
             rounded-md 
             "
         >

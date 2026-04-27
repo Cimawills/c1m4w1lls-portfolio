@@ -1,5 +1,5 @@
 import { API_VARS } from "../constants";
-import type { AboutInfoInterface, AboutInfoProps, ProjetsCardProps, SkillCardInterface, SkillsProps, TrophiesProps } from "../types";
+import type { AboutInfoProps, ProjetsCardProps, SkillsProps,  SocialInfoProps, TrophiesProps } from "../types";
 import { tables } from "./appwrite.";
 
 export async function getSkills() : Promise<SkillsProps> {
@@ -49,6 +49,21 @@ export async function getAboutInfos() : Promise<AboutInfoProps> {
         });
         console.log(response.rows[0])
         return response.rows[0] as unknown as AboutInfoProps;
+        
+    } catch (error) {
+        console.table(error);
+        throw error;
+    }
+}
+
+export async function getSocialInfos() : Promise<SocialInfoProps[]> {
+    try {
+        const response = await tables.listRows({
+            databaseId :API_VARS.APPWRITE_DATABASE_ID,
+            tableId : "socialinfos",
+        });
+        console.log(response.rows[0])
+        return response.rows as unknown as SocialInfoProps[];
         
     } catch (error) {
         console.table(error);

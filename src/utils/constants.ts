@@ -1,6 +1,5 @@
-import type { navbarItemsTypes, ProjetsCardType, SkillCardInterface, SkillsProps } from "./types";
+import type { navbarItemsTypes, ProjetsCardType, SkillsProps } from "./types";
 import PythonLogo from "../assets/python-logo.png"
-import FrontendImg from "../assets/frontend-img.png"
 
 export const navbarItems : navbarItemsTypes[]  = [
     {
