@@ -4,7 +4,7 @@ import PythonLogo from "../assets/python-logo.png"
 export const navbarItems : navbarItemsTypes[]  = [
     {
         label : "À propos",
-        link : "#hero"
+        link : "#about"
     },
     {
         label : "Skills",

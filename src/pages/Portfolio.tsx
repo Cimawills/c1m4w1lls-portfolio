@@ -74,7 +74,7 @@ export default function HomePage() {
 
           {/* Contenu principal */}
           <main className="relative z-30 ">
-            <section id="hero" className="py-8">
+            <section id="about" className="py-8">
               <About aboutInfos={aboutInfos} />
             </section>
 
