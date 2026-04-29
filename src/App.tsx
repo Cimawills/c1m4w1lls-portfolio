@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/Portfolio';
 import Blog from './pages/Blog';
 import DemoPage from './pages/Demo';
+import NotFound from './pages/NotFound';
   
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/demo" element={<DemoPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
       <Analytics />

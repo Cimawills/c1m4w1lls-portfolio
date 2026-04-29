@@ -7,7 +7,7 @@ import type {  AboutInfoProps } from "../utils/types";
 export function About({aboutInfos} : AboutInfoProps) {
   
   return (
-    <div className="flex flex-col gap-5  px-8 py-12">
+    <div className="flex flex-col gap-5  px-8 py-16 md:py-12">
       <div className="flex flex-row gap-2 text-xs items-center ">
         <Play color="#FFD600" fill="#FFD600" size={12} />
         <span className="text-yellow font-mono">root@c1m4w1lls:~$ whoami</span>

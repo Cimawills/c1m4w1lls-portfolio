@@ -12,6 +12,7 @@ export function SkillCard({...props} : SkillCardInterface) {
             before:scale-x-0 before:origin-left
             before:transition-transform before:duration-300
             hover:before:scale-x-100
+            rounded-lg
             "
         >
             {
@@ -45,6 +46,7 @@ export function ProjectCard({...props} : Omit<ProjetsCardType,"image">) {
             flex flex-col  gap-3 bg-bg-alt border border-border-main p-4
             hover:border-y-2 hover:border-y-border-bright
             hover:border-x-2 hover:border-x-yellow
+            rounded-lg
             "
             href={props.link} 
             target="_blank"
