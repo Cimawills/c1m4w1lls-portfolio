@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/Portfolio';
 import Blog from './pages/Blog';
