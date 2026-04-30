@@ -21,9 +21,9 @@ export function NavBar() {
         </button>
       </div>
 
-      <div className={clsx("md:flex gap-3 text-txt-dim ",showMenu?"flex flex-col items-end  w-full md:flex-row md:justify-end":"hidden")} >
+      <div className={clsx("md:flex gap-3 text-txt-dim transition duration-100 ease-out",showMenu?"flex flex-col items-end  w-full md:flex-row md:justify-end":"hidden")} >
         {navbarItems.map((navItem) => (
-          <a className="uppercase text-sm font-mono" href={navItem.link}>
+          <a className="uppercase text-sm font-mono" onClick={()=>setShowMenu(!showMenu)} href={navItem.link}>
             {navItem.label}
           </a>
         ))}

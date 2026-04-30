@@ -33,32 +33,32 @@ export function About({aboutInfos} : AboutInfoProps) {
         </div>
       </div>
 
-      <div className="flex gap-3 mt-3 flex-wrap">
-        {
-          aboutInfos?.mainSkills?.map((item) => ( <SkewForm label={item} /> ))
-        }
-      </div>
+        <div className="flex gap-3 mt-3 flex-wrap">
+          {
+            aboutInfos?.mainSkills?.map((item) => ( <SkewForm label={item} /> ))
+          }
+        </div>
 
-      <div className="flex gap-5">
-        <SkewForm
-          label="Voir mes projets"
-          bg="bg-yellow"
-          labelColor="text-txt-dimmer"
-          labelTwStyle="tracking-wider"
-          twStyle="px-5 py-2"
-          link={"#projet"}
-          hover="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 "
-        />
-        <SkewForm
-          label="me contacter"
-          bg="transparent"
-          labelColor="text-txt-yellow"
-          labelTwStyle="tracking-wider"
-          twStyle="px-5 py-2"
-          link={"#contact"}
-          hover="hover:bg-yellow-glow"
-        />
+        <div className="flex gap-5">
+          <SkewForm
+            label="Voir mes projets"
+            bg="bg-yellow"
+            labelColor="text-txt-dimmer"
+            labelTwStyle="tracking-wider"
+            twStyle="px-5 py-2"
+            link={"#projet"}
+            hover="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 "
+          />
+          <SkewForm
+            label="me contacter"
+            bg="transparent"
+            labelColor="text-txt-yellow"
+            labelTwStyle="tracking-wider"
+            twStyle="px-5 py-2"
+            link={"#contact"}
+            hover="hover:bg-yellow-glow"
+          />
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
