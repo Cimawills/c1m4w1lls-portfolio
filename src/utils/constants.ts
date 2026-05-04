@@ -8,19 +8,23 @@ export const navbarItems : navbarItemsTypes[]  = [
     },
     {
         label : "Skills",
-        link : "#skills"
+        link : "/#skills"
     },
     {
         label : "Projets",
-        link : "#projets"
+        link : "/#projets"
     },
     {
         label : "Palmares",
-        link : "#trophies"
+        link : "/#trophies"
+    },
+    {
+        label : "Services",
+        link : "/#services"
     },
     {
         label : "Contact",
-        link : "#contact"
+        link : "/#contact"
     },
     {
         label : "Blog",

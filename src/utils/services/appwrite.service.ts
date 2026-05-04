@@ -1,5 +1,6 @@
 import { API_VARS } from "../constants";
 import type { AboutInfoProps, ProjetsCardProps, SkillsProps,  SocialInfoProps, TrophiesProps } from "../types";
+import type { ServicesProps } from "../types/data.types";
 import { tables } from "./appwrite.";
 
 export async function getSkills() : Promise<SkillsProps> {
@@ -64,6 +65,21 @@ export async function getSocialInfos() : Promise<SocialInfoProps[]> {
         });
         console.log(response.rows[0])
         return response.rows as unknown as SocialInfoProps[];
+        
+    } catch (error) {
+        console.table(error);
+        throw error;
+    }
+}
+
+export async function getServices() : Promise<ServicesProps[]> {
+    try {
+        const response = await tables.listRows({
+            databaseId :API_VARS.APPWRITE_DATABASE_ID,
+            tableId : "services",
+        });
+        console.log(response.rows[0])
+        return response.rows as unknown as ServicesProps[];
         
     } catch (error) {
         console.table(error);

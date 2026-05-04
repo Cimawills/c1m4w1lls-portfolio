@@ -64,3 +64,10 @@ export type SocialInfoType = {
 export type SocialInfoProps = {
     socialInfos : SocialInfoType[]
 }
+
+
+export interface SectionTitleInterface{
+    title  : string,
+    subtitle : string
+    coloredSubtitle : string
+}

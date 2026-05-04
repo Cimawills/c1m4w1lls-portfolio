@@ -19,8 +19,11 @@ import {
   getSkills,
   getSocialInfos,
   getTrophies,
+  getServices,
 } from "../utils/services/appwrite.service";
 import Loader from "../components/Loader";
+import Services from "../components/Services";
+import type { ServicesProps } from "../utils/types/data.types";
 
 export default function HomePage() {
   const [isLoading, setLoading] = useState<boolean>(true);
@@ -29,6 +32,7 @@ export default function HomePage() {
   const [trophies, setTrophies] = useState<TrophiesProps | []>([]);
   const [aboutInfos, setAboutInfos] = useState<AboutInfoProps>();
   const [socialInfos, setSocialInfos] = useState<SocialInfoProps[]>();
+  const [services, setServices] = useState<ServicesProps[]>();
   //const [projects,setProjects] = useState<SkillsProps>();
 
   useEffect(() => {
@@ -41,12 +45,15 @@ export default function HomePage() {
         const trophiesData = await getTrophies();
         const aboutInfosData = await getAboutInfos();
         const socialInfosData = await getSocialInfos();
+        const servicesData = await getServices();
 
         setSkills(skillsData);
         setProjects(projectData);
         setTrophies(trophiesData);
         setAboutInfos(aboutInfosData);
         setSocialInfos(socialInfosData);
+        setServices(servicesData);
+
       } catch (error) {
         console.error("Erreur lors du chargement :", error);
       } finally {
@@ -88,6 +95,10 @@ export default function HomePage() {
 
             <section id="trophies">
               <Trophies trophies={trophies} />
+            </section>
+
+            <section id="services">
+              <Services  services={services} />
             </section>
 
             <section id="contact">

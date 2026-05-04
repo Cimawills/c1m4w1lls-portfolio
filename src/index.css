@@ -103,6 +103,14 @@
   @apply text-5xl md:text-8xl font-extrabold font-head uppercase tracking-tighter text-txt;
 }
 
+@utility section-base-title{
+  @apply font-head font-bold text-2xl tracking-wider
+}
+
+@utility section-base-describe{
+  @apply text-txt-dim font-mono text-xs
+}
+
 .animate-fade-pulse {
     animation:  fade-out 2s ease-in-out infinite;
 }

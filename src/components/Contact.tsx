@@ -4,7 +4,7 @@ import { SectionTitle } from "./Others";
 
 export function Contact({socialInfos} : SocialInfoProps) {
     return (
-        <div className="flex flex-col gap-5 px-8 py-12 justify-center items-center text-center">
+        <div className="flex flex-col bg-bg-alt gap-5 px-8 py-12 justify-center items-center text-center">
             <div className="flex flex-col gap-3">
                 <SectionTitle label="Contact" />
                 
